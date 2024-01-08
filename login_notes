@@ -1,0 +1,21 @@
+3 potential login scenarios
+
+1.default
+email and password
+
+enter email
+if email is ok then we show the password one
+and disable the email input
+then log them im
+
+2.passwordless
+if email is good
+show the screen that says we sent a code to your email please neter thta code below
+they enter and are logged in
+
+3.two factor
+if the email is good
+show to enter password
+then show the screen that says we sent a code to them.
+and they must enter
+
