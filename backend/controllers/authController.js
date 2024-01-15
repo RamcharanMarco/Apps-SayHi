@@ -21,12 +21,12 @@ async function connect() {
   try {
     // rabbitmq default port is 5672
     const amqpServer =
-      "amqps://wypzmmcz:f_wd5674l1TZBKA_F7DV7R4NxqnWVC68@moose.rmq.cloudamqp.com/wypzmmcz";
+      "amqps://srpnjecr:quwgluu1FAEaYMKwygVOnMUGnK1Mw6x5@hawk.rmq.cloudamqp.com/srpnjecr";
     connection = await amqplib.connect(amqpServer);
     channel = await connection.createChannel();
 
     // make sure that the order channel is created, if not this statement will create it
-    await channel.assertQueue("orders");
+    await channel.assertQueue("sayhi");
   } catch (error) {
     console.log(error);
   }
@@ -93,7 +93,7 @@ const createUser = async (req, res) => {
 
     /*const data = {code:1,email:user.email}
     channel.sendToQueue(
-      'orders',
+      'sayhi',
       Buffer.from(
         JSON.stringify({
           ...data,
@@ -152,7 +152,7 @@ const loginUser = async (req, res) => {
       });
       const data = { code: 6, email: user.email, token: token.code };
       channel.sendToQueue(
-        "orders",
+        "sayhi",
         Buffer.from(
           JSON.stringify({
             ...data,
@@ -178,7 +178,7 @@ const loginUser = async (req, res) => {
       });
       const data = { code: 5, email: user.email, token: token.code };
       channel.sendToQueue(
-        "orders",
+        "sayhi",
         Buffer.from(
           JSON.stringify({
             ...data,
@@ -348,7 +348,7 @@ const Send2factorEmail = async (req, res) => {
       });
       const data = { code: 6, email: user.email, token: token.code };
       channel.sendToQueue(
-        "orders",
+        "sayhi",
         Buffer.from(
           JSON.stringify({
             ...data,
@@ -399,7 +399,7 @@ const checkEmail = async (req, res) => {
       });
       const data = { code: 5, email: user.email, token: token.code };
       channel.sendToQueue(
-        "orders",
+        "sayhi",
         Buffer.from(
           JSON.stringify({
             ...data,

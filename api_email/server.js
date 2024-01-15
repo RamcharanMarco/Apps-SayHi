@@ -49,12 +49,12 @@ connect();
 async function connect() {
   try {
     const amqpServer =
-      "amqps://wypzmmcz:f_wd5674l1TZBKA_F7DV7R4NxqnWVC68@moose.rmq.cloudamqp.com/wypzmmcz";
+      "amqps://srpnjecr:quwgluu1FAEaYMKwygVOnMUGnK1Mw6x5@hawk.rmq.cloudamqp.com/srpnjecr";
     connection = await amqplib.connect(amqpServer);
     channel = await connection.createChannel();
 
-    // consume all the orders that are not acknowledged
-    await channel.consume("orders", (data) => {
+    // consume all the sayhi that are not acknowledged
+    await channel.consume("sayhi", (data) => {
       console.log(`Received ${Buffer.from(data.content)}`);
       let code = JSON.parse(`${Buffer.from(data.content)}`).code;
       let email = JSON.parse(`${Buffer.from(data.content)}`).email;

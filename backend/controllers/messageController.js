@@ -11,12 +11,12 @@ async function connect() {
   try {
     // rabbitmq default port is 5672
     const amqpServer =
-      "amqps://wypzmmcz:f_wd5674l1TZBKA_F7DV7R4NxqnWVC68@moose.rmq.cloudamqp.com/wypzmmcz";
+      "amqps://srpnjecr:quwgluu1FAEaYMKwygVOnMUGnK1Mw6x5@hawk.rmq.cloudamqp.com/srpnjecr";
     connection = await amqplib.connect(amqpServer);
     channel = await connection.createChannel();
 
     // make sure that the order channel is created, if not this statement will create it
-    await channel.assertQueue("orders");
+    await channel.assertQueue("sayhi");
   } catch (error) {
     console.log(error);
   }
@@ -24,7 +24,7 @@ async function connect() {
 
 /*const data = {code:1,email:user.email}
     channel.sendToQueue(
-      'orders',
+      'sayhi',
       Buffer.from(
         JSON.stringify({
           ...data,
@@ -54,7 +54,7 @@ const sendMessage = async (req, res) => {
   try {
     const data = { code: 8, email, body, recipient,name };
     channel.sendToQueue(
-      "orders",
+      "sayhi",
       Buffer.from(
         JSON.stringify({
           ...data,
@@ -66,7 +66,7 @@ const sendMessage = async (req, res) => {
       console.log(reply_email_content);
       const data = { code: 7, email, reply_email_content};
       channel.sendToQueue(
-        "orders",
+        "sayhi",
         Buffer.from(
           JSON.stringify({
             ...data,
