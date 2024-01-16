@@ -227,7 +227,7 @@ const Settings = () => {
         <div className="box">
           <h1>
             {" "}
-            <Link to={`/console/${id}/settings/code`}>download login info</Link>
+            <button onClick={toggleDeleteForm}>download login info</button>
           </h1>
         </div>
         <div className="box">
