@@ -5,6 +5,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import DeleteAccount from "../components/DeleteAccount";
 import ChangePassword from "../components/ChangePassword";
 import DeleteForm from "../components/DeleteForm";
+import { DownloadLoginInfo } from "../components/DownloadLoginInfo";
 import ConfirmLogout from "../components/ConfirmLogout";
 import { useLogout } from "../hooks/useLogout";
 import { api } from "../api/api";
@@ -31,7 +32,10 @@ const Settings = () => {
   const [showConfirmLogout, setShowConfirmLogout] = useState<any>(false);
   const [showPasswordLess, setShowPasswordLess] = useState<any>(false);
   const [showTwoFactor, setShowTwoFactor] = useState<any>(false);
+  const [showDownloadLoginInfo, setShowDownloadLoginInfo] = useState<any>(false);
 
+  
+  
   const [settings, setSettings] = useState<any>({});
 
   const handleDeleteUser = async (e: any) => {
@@ -96,6 +100,20 @@ const Settings = () => {
     }
     if (!showDeleteForm) {
       setShowDeleteForm(true);
+      document.body.style.height = "100vh";
+      document.body.style.overflowY = "hidden";
+    }
+  };
+
+  const toggleDownloadLoginInfo = (e: any) => {
+    e.preventDefault();
+    if (showDeleteForm) {
+      setShowDownloadLoginInfo(false);
+      document.body.style.height = "100vh";
+      document.body.style.overflowY = "scroll";
+    }
+    if (!showDeleteForm) {
+      setShowDownloadLoginInfo(true);
       document.body.style.height = "100vh";
       document.body.style.overflowY = "hidden";
     }
@@ -175,6 +193,9 @@ const Settings = () => {
       ) : null}
       {showDeleteForm ? (
         <DeleteForm toggleDeleteForm={toggleDeleteForm} />
+      ) : null}
+            {showDownloadLoginInfo ? (
+        <DownloadLoginInfo toggleDeleteAccount={toggleDeleteAccount} />
       ) : null}
       {showChangePassword ? (
         <ChangePassword toggleChangePassword={toggleChangePassword} />
