@@ -95,10 +95,6 @@ async function connect() {
   }
 }
 
-let logSomeShit = () => {
-  console.log("someshit");
-};
-
 let sendEmail = async (email, body, name, recipient) => {
   try {
     var mailOptions = {
@@ -162,6 +158,93 @@ let sendGoodbye = async (email) => {
       subject: "files", // Subject line
       /*text: 'Hello world ', // plaintext body*/
       html: `<p>so sorry to see you leave</h1> `, // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        return;
+        console.log(error);
+      }
+      console.log("Message sent to " + email + ":" + info.response);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+let sendRecoveryCodeCreatedInform = async (email, token) => {
+  try {
+    var mailOptions = {
+      from: '"jobfinder " <jobfinder1956@outlook.com>', // sender address (who sends)
+      to: email, // list of receivers (who receives)
+      subject: "files", // Subject line
+      /*text: 'Hello world ', // plaintext body*/
+      html: `<div>
+          <h1>reset password email</h1>
+          <p>please follow this link to reset your password</p>
+          <p>this token is valid for 24 hours and cant be used after</p>
+          <a href='http://localhost:5173/forgotpassword/change?token=${token}'>click here to reset your password</a>
+          </div> 
+          `, // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        return;
+        console.log(error);
+      }
+      console.log("Message sent to " + email + ":" + info.response);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+let sendRecoveryCodeUsedInform = async (email, token) => {
+  try {
+    var mailOptions = {
+      from: '"jobfinder " <jobfinder1956@outlook.com>', // sender address (who sends)
+      to: email, // list of receivers (who receives)
+      subject: "files", // Subject line
+      /*text: 'Hello world ', // plaintext body*/
+      html: `<div>
+          <h1>reset password email</h1>
+          <p>please follow this link to reset your password</p>
+          <p>this token is valid for 24 hours and cant be used after</p>
+          <a href='http://localhost:5173/forgotpassword/change?token=${token}'>click here to reset your password</a>
+          </div> 
+          `, // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        return;
+        console.log(error);
+      }
+      console.log("Message sent to " + email + ":" + info.response);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+let sendFormDeleteInform = async (email, token) => {
+  try {
+    var mailOptions = {
+      from: '"jobfinder " <jobfinder1956@outlook.com>', // sender address (who sends)
+      to: email, // list of receivers (who receives)
+      subject: "files", // Subject line
+      /*text: 'Hello world ', // plaintext body*/
+      html: `<div>
+          <h1>reset password email</h1>
+          <p>please follow this link to reset your password</p>
+          <p>this token is valid for 24 hours and cant be used after</p>
+          <a href='http://localhost:5173/forgotpassword/change?token=${token}'>click here to reset your password</a>
+          </div> 
+          `, // html body
     };
 
     // send mail with defined transport object
@@ -293,7 +376,7 @@ let sendReply = async (email,con) => {
       to: email, // list of receivers (who receives)
       subject: "files", // Subject line
       /*text: 'Hello world ', // plaintext body*/
-      html: `<p>hey i will conact you back ${con}</p> `, // html body
+      html: `<p>hey thanks for contacting me i will get in touch soon ${con}</p> `, // html body
     };
 
     // send mail with defined transport object
