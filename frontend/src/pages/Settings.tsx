@@ -6,7 +6,7 @@ import DeleteAccount from "../components/DeleteAccount";
 import ChangePassword from "../components/ChangePassword";
 import DeleteForm from "../components/DeleteForm";
 import { DownloadLoginInfo } from "../components/DownloadLoginInfo";
-import ConfirmLogout from "../components/ConfirmLogout";
+import ConfirmLogout from "../components/dialogs/ConfirmLogout";
 import { useLogout } from "../hooks/useLogout";
 import { api } from "../api/api";
 import moment from "moment";

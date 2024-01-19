@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import "../styles/confirmLogout.scss";
-import { useLogout } from "../hooks/useLogout";
+import { useLogout } from "../../hooks/useLogout";
 
 interface AppProps {
   toggleLogout: (params: any) => any;
