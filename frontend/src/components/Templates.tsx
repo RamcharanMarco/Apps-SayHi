@@ -18,13 +18,15 @@ interface AppProps {
   toggleTemplates: (params: any) => any;
   setNew: (params: any) => any;
   data: data;
+  cat?: string
 }
 
-const Templates: FC<AppProps> = ({ toggleTemplates, setNew, data }) => {
+const Templates: FC<AppProps> = ({ toggleTemplates, setNew, data, cat = 'cat' }) => {
   let width2 = `100%`;
 
   return (
     <div className="templates">
+      <h1>cat {cat}</h1>
       <button onClick={toggleTemplates} className="close">
         close
       </button>
