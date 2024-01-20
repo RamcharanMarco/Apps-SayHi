@@ -5,6 +5,7 @@ import ScriptBox from "../components/ScriptBox";
 import "../styles/console.scss";
 import { api } from "../api/api";
 import Loader from "../components/Loader";
+import { AddWebsiteModal } from "../components/modals/AddWebsiteModal";
 
 const Console = () => {
   const { user, setform } = useStore();
@@ -61,8 +62,13 @@ const Console = () => {
     }
   };
 
+  const [showDeleteAccount, setShowDeleteAccount] = useState<any>(false);
+
   return (
     <div className="console">
+      {showDeleteAccount ? (
+        <AddWebsiteModal onCancel={() => setShowDeleteAccount(false)} />
+      ) : null}
       <div className="search">
         <div>
           <h1>FORMS</h1>
@@ -76,7 +82,9 @@ const Console = () => {
           />
         </div>
         <div className="create">
-          <Link to={`/console/${id}/form/create`}>add new</Link>
+          <button onClick={() => setShowDeleteAccount(true)}>
+            add new
+          </button>
         </div>
       </div>
       <div className="container">

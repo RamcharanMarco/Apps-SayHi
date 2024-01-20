@@ -5,7 +5,6 @@ import Login from "../pages/Login";
 import Console from "../pages/Console";
 import Docs from "../pages/Docs";
 import Form from "../pages/Form";
-import CreateForm from "../pages/createForm";
 import Settings from "../pages/Settings";
 
 import { useStore } from "../store/store";
@@ -14,7 +13,6 @@ import ResetPassword from "../pages/ResetPassword";
 import Demo from "../pages/Demo";
 import MainLayout from "../components/Layouts/MainLayout";
 import UserLayout from "../components/Layouts/UserLayout";
-import PasswordLess from "../pages/PasswordLess";
 import PasswordLess2 from "../pages/PasswordLess2";
 
 import TwoFactorLogin from "../pages/TwoFactorLogin";
@@ -22,6 +20,7 @@ import Code from "../pages/Code";
 import TwoFactor from "../pages/TwoFactor";
 import LoginTest from "../pages/LoginTest";
 import UserSettingsLayout from "../components/Layouts/UserSettingsLayout";
+import { PasswordLessLoginSetup } from "../pages/PasswordLessLoginSetup";
 
 const Router = () => {
   const { user } = useStore();
@@ -48,7 +47,6 @@ const Router = () => {
         <Route path="/console/:id/" element={<UserLayout />}>
           <Route path="settings" element={<Settings />}></Route>
           <Route index element={<Console />}></Route>
-          <Route path="form/create" element={<CreateForm />}></Route>
           <Route path="form/:formid" element={<Form />}></Route>
         </Route>
 
@@ -56,7 +54,7 @@ const Router = () => {
         <Route path="/console/:id/settings" element={<UserSettingsLayout />}>
           <Route path="code" element={<Code />}></Route>
           <Route path="twofactorauth" element={<TwoFactor />}></Route>
-          <Route path="passwordless" element={<PasswordLess />}></Route>
+          <Route path="passwordless" element={<PasswordLessLoginSetup />}></Route>
         </Route>
 
         {/* auth layout */}

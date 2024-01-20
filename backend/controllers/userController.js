@@ -150,6 +150,20 @@ const getUserSettings = async (req, res) => {
   }
 };
 
+const getAuthHistory = async (req, res) => {
+  const _id = req.params.id;
+  try {
+    const form = await Form.findOne({ user_id: _id });
+    const user = await User.findById({ _id });
+    if (!user) {
+      return res.status(400).json({ error: "no such user" });
+    }
+    res.status(200).json({ user, form });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   getUser,
   deleteUser,
@@ -158,4 +172,5 @@ module.exports = {
   checkPassword,
   editSettings,
   getUserSettings,
+  getAuthHistory
 };

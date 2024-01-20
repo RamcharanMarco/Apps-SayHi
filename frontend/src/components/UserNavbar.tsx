@@ -30,15 +30,9 @@ const UserNavbar = () => {
           <Link onClick={toggle} to={`/console/${user.user._id}`}>
             forms
           </Link>
-
-          <Link onClick={toggle} to={`/console/${user.user._id}/form/create`}>
-            create form
-          </Link>
-
           <Link onClick={toggle} to={`/console/${user.user._id}/form/edit`}>
             edit form
           </Link>
-
           <Link onClick={toggle} to={`/console/${user.user._id}/settings`}>
             settings
           </Link>
@@ -47,7 +41,6 @@ const UserNavbar = () => {
       <h1>SAYHELLO</h1>
       <div id="links" className="links">
         <Link to={`/console/${user.user._id}`}>forms</Link>
-        <Link to={`/console/${user.user._id}/form/create`}>create form</Link>
         <Link to={`/console/${user.user._id}/settings`}>settings</Link>
       </div>
       <BiMenu id="menu-icon" onClick={toggle} />

@@ -8,6 +8,7 @@ const {
   checkPassword,
   editSettings,
   getUserSettings,
+  getAuthHistory,
 } = require("../controllers/userController");
 
 const Auth = require("../middlewear/requireAuth");
@@ -25,5 +26,8 @@ router.delete("/:id", deleteUser);
 router.post("/passwordchange/:id", changePassword);
 
 router.post("/password/check/:id", checkPassword);
+
+router.post("/auth/history/:id", getAuthHistory);
+
 
 module.exports = router;

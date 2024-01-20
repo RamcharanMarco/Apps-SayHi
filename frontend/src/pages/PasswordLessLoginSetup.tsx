@@ -4,7 +4,7 @@ import { api } from "../api/api";
 import { useStore } from "../store/store";
 import { useParams, Link } from "react-router-dom";
 
-const PasswordLess = () => {
+export const PasswordLessLoginSetup = () => {
   const [error, setError] = useState<any>();
   const [checked, setChecked] = useState<any>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -113,10 +113,11 @@ const PasswordLess = () => {
 
   return (
     <div className="passwordless">
+                  <h1>passwordless login 1</h1>
+
       {pwdless ? (
         enabledpage === 1 ? (
           <div className="passwordless_enabled_page_one">
-            <h1>passwordless login</h1>
             <Link className="settings-link" to={`/console/${id}/settings`}>
               settings
             </Link>
@@ -207,5 +208,3 @@ const PasswordLess = () => {
     </div>
   );
 };
-
-export default PasswordLess;

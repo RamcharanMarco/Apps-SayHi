@@ -1,31 +1,70 @@
 import { FC, useState } from "react";
-import { useDeleteAccount } from "../hooks/useDeleteAccount";
-import "../styles/deleteAccount.scss";
-import { useParams } from "react-router-dom";
-import Loader from "./Loader";
+import "../styles/changePassword.scss";
+import { useChangePassword } from "../hooks/useChangePassword";
+import { useCheckPassword } from "../hooks/useCheckPassword";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 interface AppProps {
-  toggleDeleteAccount: (params: any) => any;
+  toggleDownloadLoginInfo: (e: any, state: boolean) => any;
 }
 
-export const DownloadLoginInfo: FC<AppProps> = ({ toggleDeleteAccount }) => {
-  const [val, setVal] = useState<string>("");
-  const { deleteAccount, loading } = useDeleteAccount();
-  const { id } = useParams();
+export const DownloadLoginInfo: FC<AppProps> = ({
+  toggleDownloadLoginInfo,
+}) => {
+  const { changePassword } = useChangePassword();
+  const { checkPassword, checked, error } = useCheckPassword();
 
-  const handleDelete = (e:any) =>{
-    if(val === 'delete my account'){
-      deleteAccount(id)
+  const [current, setCurrent] = useState("");
+  const [newp, setNewp] = useState("");
+  const [newp2, setNewp2] = useState("");
+
+  const handleCheckPassword = (e: any) => {
+    e.preventDefault();
+    checkPassword(current);
+  };
+
+  const handleChangePassword = (e: any) => {
+    e.preventDefault();
+    if ((newp !== newp2 && newp) || newp2 === "") {
+      alert("bad shit hapenign");
+      return;
     }
-  }
+    changePassword(newp);
+  };
 
   return (
-    <div className="deleteAccount">
+    <div className="changePassword">
       <div className="content">
-      <h1>Download login info</h1>
-      <input type="text" value={val} onChange={(e) => setVal(e.target.value)} />
-        <button disabled={val !== 'delete my account'} onClick={handleDelete}>download</button>
-      <button onClick={toggleDeleteAccount}>cancel</button>
+        <div className="top">
+          <h1>download login info</h1>
+          <p>downalod your login and logout history</p>
+          <hr />
+        </div>
+        <div className="checkpassword">
+          <h2>enter your pasword first</h2>
+          <input
+            value={current}
+            onChange={(e) => setCurrent(e.target.value)}
+            type="text"
+            placeholder="current password"
+          />
+          <button onClick={handleCheckPassword}>confirm</button>
+          <div
+            style={error ? { visibility: "visible" } : { visibility: "hidden" }}
+            className="error"
+          >
+            <p>{error}</p>
+          </div>
+        </div>
+        <div className="bottom">
+          <button
+            className="button-cancel"
+            onClick={(e) => toggleDownloadLoginInfo(e, false)}
+          >
+            cancel
+          </button>
+        </div>
       </div>
     </div>
   );

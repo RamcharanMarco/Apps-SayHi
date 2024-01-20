@@ -32,10 +32,9 @@ const Settings = () => {
   const [showConfirmLogout, setShowConfirmLogout] = useState<any>(false);
   const [showPasswordLess, setShowPasswordLess] = useState<any>(false);
   const [showTwoFactor, setShowTwoFactor] = useState<any>(false);
-  const [showDownloadLoginInfo, setShowDownloadLoginInfo] = useState<any>(false);
+  const [showDownloadLoginInfo, setShowDownloadLoginInfo] =
+    useState<any>(false);
 
-  
-  
   const [settings, setSettings] = useState<any>({});
 
   const handleDeleteUser = async (e: any) => {
@@ -105,14 +104,14 @@ const Settings = () => {
     }
   };
 
-  const toggleDownloadLoginInfo = (e: any) => {
+  const toggleDownloadLoginInfo = (e: any, state: boolean) => {
     e.preventDefault();
-    if (showDeleteForm) {
+    if (state) {
       setShowDownloadLoginInfo(false);
       document.body.style.height = "100vh";
       document.body.style.overflowY = "scroll";
     }
-    if (!showDeleteForm) {
+    if (!state) {
       setShowDownloadLoginInfo(true);
       document.body.style.height = "100vh";
       document.body.style.overflowY = "hidden";
@@ -194,9 +193,6 @@ const Settings = () => {
       {showDeleteForm ? (
         <DeleteForm toggleDeleteForm={toggleDeleteForm} />
       ) : null}
-            {showDownloadLoginInfo ? (
-        <DownloadLoginInfo toggleDeleteAccount={toggleDeleteAccount} />
-      ) : null}
       {showChangePassword ? (
         <ChangePassword toggleChangePassword={toggleChangePassword} />
       ) : null}
@@ -248,7 +244,14 @@ const Settings = () => {
         <div className="box">
           <h1>
             {" "}
-            <button onClick={toggleDeleteForm}>download login info</button>
+            <button onClick={() => setShowDownloadLoginInfo(true)}>
+              download login info
+            </button>
+            {showDownloadLoginInfo ? (
+              <DownloadLoginInfo
+              toggleDownloadLoginInfo={(e) => toggleDownloadLoginInfo(e, true)}
+              />
+            ) : null}
           </h1>
         </div>
         <div className="box">

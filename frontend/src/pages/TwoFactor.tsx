@@ -156,7 +156,7 @@ const TwoFactor = () => {
   return (
     <div className="twofactor">
       <Link className="settings-link" to={`/console/${id}/settings`}>
-        settings
+        cancel
       </Link>
       {enabled ? (
         <div className="enabled home">
